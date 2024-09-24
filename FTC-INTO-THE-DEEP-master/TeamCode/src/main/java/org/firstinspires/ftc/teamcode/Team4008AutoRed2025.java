@@ -1,4 +1,4 @@
 package org.firstinspires.ftc.teamcode;
 
-public class Team6976AutoRed2025 {
+public class Team4008AutoRed2025 {
 }

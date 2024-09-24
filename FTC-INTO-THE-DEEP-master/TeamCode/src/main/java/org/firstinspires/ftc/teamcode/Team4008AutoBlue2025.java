@@ -5,10 +5,10 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous (name="Team6976Auto1ParkingBlue", group="6976")
-public class Team6976AutoBlue2025 extends LinearOpMode{
+@Autonomous (name="Team4008Auto1ParkingBlue", group="4008")
+public class Team4008AutoBlue2025 extends LinearOpMode{
 
-    Team6976HM2025 robot = new Team6976HM2025();
+    Team4008HM2025 robot = new Team4008HM2025();
     ElapsedTime Time = new ElapsedTime();
     double multy = 0.3;
 
