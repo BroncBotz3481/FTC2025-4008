@@ -15,7 +15,7 @@ public class Team4008HM2025 {
     public DcMotor DriveLeftBack = null;
     public DcMotor DriveLeftFront = null;
     public DcMotor DriveRightFront = null;
-
+    public DcMotor RightSlide = null;
 
 //I fixed it
 
@@ -38,6 +38,7 @@ public class Team4008HM2025 {
         DriveRightFront = hwMap.get(DcMotor.class,"DriveRightFront"); //1
         DriveLeftBack = hwMap.get(DcMotor.class,"DriveLeftBack"); //2
         DriveRightBack = hwMap.get(DcMotor.class,"DriveRightBack"); //3
+
         //   Lights = hwMap.get(RevBlinkinLedDriver.class,"Lights");
 
         DriveLeftFront.setDirection(DcMotor.Direction.FORWARD);
@@ -62,10 +63,10 @@ public class Team4008HM2025 {
 //        Turret.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 //        //IntakeLift.setDirection(DcMotor.Direction.REVERSE);
 
-//        Elevator = hwMap.get(DcMotor.class, "Elevator");
-//        Elevator.setDirection(DcMotorSimple.Direction.REVERSE);
-//        Elevator.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-//        Elevator.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        RightSlide = hwMap.get(DcMotor.class, "RightSlide");
+        RightSlide.setDirection(DcMotorSimple.Direction.REVERSE);
+        RightSlide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        RightSlide.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
 
 
