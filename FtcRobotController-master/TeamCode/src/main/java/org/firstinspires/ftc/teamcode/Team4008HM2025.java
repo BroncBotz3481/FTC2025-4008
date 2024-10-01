@@ -17,8 +17,8 @@ public class Team4008HM2025 {
     public DcMotor DriveRightFront = null;
     public DcMotor RightSlide = null;
     public DcMotor LeftSlide = null;
-    public DcMotor Arm1 = null;
-    public DcMotor Arm2 = null;
+    public DcMotor RightArm = null;
+    public DcMotor LeftArm = null;
 //I fixed it
 
 
@@ -74,16 +74,16 @@ public class Team4008HM2025 {
         LeftSlide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         LeftSlide.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        Arm1 = hwMap.get(DcMotor.class, "Arm1");
-        Arm1.setDirection(DcMotorSimple.Direction.REVERSE);
-        Arm1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        Arm1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        RightArm = hwMap.get(DcMotor.class, "RightArm");
+        RightArm.setDirection(DcMotorSimple.Direction.REVERSE);
+        RightArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        RightArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
 
-        Arm2 = hwMap.get(DcMotor.class, "Arm2");
-        Arm2.setDirection(DcMotorSimple.Direction.REVERSE);
-        Arm2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        Arm2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        LeftArm = hwMap.get(DcMotor.class, "LeftArm");
+        LeftArm.setDirection(DcMotorSimple.Direction.REVERSE);
+        LeftArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        LeftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
 //        Intake = hwMap.get(Servo.class, "Servo1");
 
