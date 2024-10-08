@@ -64,6 +64,11 @@ public class Team4008TeleOp2025 extends LinearOpMode {
             robot.DriveRightFront.setPower(frontRightPower * mag);
             robot.DriveRightBack.setPower(backRightPower * mag);
 
+            double slidePower = gamepad2.left_stick_y * 0.75;
+            robot.leftSlide.setPower(slidePower);
+            robot.rightSlide.setPower(slidePower * -1);
+
+
 //            robot.Servo.setPosition(.25);
 
 
