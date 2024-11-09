@@ -19,6 +19,8 @@ public class Team4008HM2025 {
     public DcMotor LeftSlide = null;
     public DcMotor RightArm = null;
     public DcMotor LeftArm = null;
+
+    public Servo Servo = null;
 //I fixed it
 
 
@@ -85,7 +87,7 @@ public class Team4008HM2025 {
         LeftArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         LeftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-//        Intake = hwMap.get(Servo.class, "Servo1");
+        Servo = hwMap.get(Servo.class, "Servo");
 
         //Arm = hwMap.get(DcMotor.class, "Arm");
 

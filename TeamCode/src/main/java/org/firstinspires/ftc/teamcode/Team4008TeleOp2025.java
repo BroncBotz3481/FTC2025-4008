@@ -53,11 +53,7 @@ public class Team4008TeleOp2025 extends LinearOpMode {
             double frontRightPower = (y - x - rx) / denominator;
             double backRightPower = (y + x - rx) / denominator;
 
-            telemetry.addData("RightFront", robot.DriveRightFront.getCurrentPosition());
-            telemetry.addData("RightBack", robot.DriveRightBack.getCurrentPosition());
-            telemetry.addData("LeftFront", robot.DriveLeftFront.getCurrentPosition());
-            telemetry.addData("LeftBack", robot.DriveLeftBack.getCurrentPosition());
-            telemetry.update();
+
 
             robot.DriveLeftFront.setPower(frontLeftPower * mag);
             robot.DriveLeftBack.setPower(backLeftPower * mag);
@@ -72,8 +68,24 @@ public class Team4008TeleOp2025 extends LinearOpMode {
             robot.LeftArm.setPower(armPower);
             robot.RightArm.setPower(armPower * -1);
 
+            //robot.Servo.setPosition(0.25);
 
-//            robot.Servo.setPosition(.25);
+
+            if(gamepad2.y) {
+                robot.Servo.setPosition(0);//
+            }
+
+            if(gamepad2.a) {
+                robot.Servo.setPosition(0.5);//?
+            }
+            telemetry.addData("RightFront", robot.DriveRightFront.getCurrentPosition());
+            telemetry.addData("RightBack", robot.DriveRightBack.getCurrentPosition());
+            telemetry.addData("LeftFront", robot.DriveLeftFront.getCurrentPosition());
+            telemetry.addData("LeftBack", robot.DriveLeftBack.getCurrentPosition());
+            telemetry.addData("Servo Position", robot.Servo.getPosition());//getCurrentPosition?
+            telemetry.update();
+
+
 
 
 //            double Arm1 = gamepad2.right_stick_y;
