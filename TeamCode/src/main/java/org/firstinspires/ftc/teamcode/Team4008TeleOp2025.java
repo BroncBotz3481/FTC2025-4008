@@ -23,7 +23,7 @@ public class Team4008TeleOp2025 extends LinearOpMode {
         robot.DriveRightBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.DriveLeftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.DriveLeftFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        robot.Servo.setPosition(0.3);
+        robot.Servo.setPosition(0.4);
 
         int count = 0;
         //robot.Lights.setPattern(RevBlinkinLedDriver.BlinkinPattern.BEATS_PER_MINUTE_PARTY_PALETTE);
@@ -72,11 +72,11 @@ public class Team4008TeleOp2025 extends LinearOpMode {
 
 
             if(gamepad2.y) {
-                robot.Servo.setPosition(0);//
+                robot.Servo.setPosition(0.4);//open
             }
 
             if(gamepad2.a) {
-                robot.Servo.setPosition(0.5);//?
+                robot.Servo.setPosition(0);//close
             }
             telemetry.addData("RightFront", robot.DriveRightFront.getCurrentPosition());
             telemetry.addData("RightBack", robot.DriveRightBack.getCurrentPosition());
