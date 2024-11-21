@@ -78,6 +78,8 @@ public class Team4008TeleOp2025 extends LinearOpMode {
             if(gamepad2.a) {
                 robot.Servo.setPosition(0);//open
             }
+//          just in case situation:
+//          if(gamepad2.b) {
             telemetry.addData("RightFront", robot.DriveRightFront.getCurrentPosition());
             telemetry.addData("RightBack", robot.DriveRightBack.getCurrentPosition());
             telemetry.addData("LeftFront", robot.DriveLeftFront.getCurrentPosition());
