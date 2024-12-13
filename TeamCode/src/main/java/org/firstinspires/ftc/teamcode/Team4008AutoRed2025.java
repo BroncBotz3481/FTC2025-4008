@@ -17,9 +17,25 @@ public class Team4008AutoRed2025 extends LinearOpMode{
         robot.Map(hardwareMap);
         waitForStart();
 
-        //write code here
+        /*
+        facing the right to start
+        parking
+         */
+        moveForward(0.4,2200);
 
 
+
+    }
+    public void moveForward (double power, int time){
+        robot.DriveRightFront.setPower(-power);//forward is -direction?
+        robot.DriveLeftFront.setPower(-power);
+        robot.DriveRightBack.setPower(-power);
+        robot.DriveLeftBack.setPower(-power);
+        sleep(time);
+        robot.DriveRightFront.setPower(0);
+        robot.DriveLeftFront.setPower(0);
+        robot.DriveRightBack.setPower(0);
+        robot.DriveLeftBack.setPower(0);
     }
 
 }
