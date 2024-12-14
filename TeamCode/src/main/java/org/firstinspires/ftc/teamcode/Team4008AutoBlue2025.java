@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous (name="Team4008AutoBlue2025", group="4008")
@@ -15,18 +16,32 @@ public class Team4008AutoBlue2025 extends LinearOpMode {
     public void runOpMode() {
         robot.Map(hardwareMap);
         robot.Servo.setPosition(0);
+
         waitForStart();
 
-        moveForward(0.4 , 4000);
-    /*
-    start as the alliance on the right & face right
-    Moving distance is about half the field
-    */
+
+       /*
+       Facing left to start
+       Reach the ascent zone
+
+        */
+
+       moveForward(0.4,1800);
+       //slideUp(0.4,2000);
+        moveRight(0.4,4000);
+        moveBackward(0.4,1250);
+
+       //armForward(0.4,250);
+       robot.Servo.setPosition(0.4);//open
+       //armBackward(0.4,250);
+
+
+
 
     }
 
     public void moveForward (double power, int time){
-        robot.DriveRightFront.setPower(-power);
+        robot.DriveRightFront.setPower(-power);//forward is -direction?
         robot.DriveLeftFront.setPower(-power);
         robot.DriveRightBack.setPower(-power);
         robot.DriveLeftBack.setPower(-power);
@@ -47,7 +62,7 @@ public class Team4008AutoBlue2025 extends LinearOpMode {
         robot.DriveRightBack.setPower(0);
         robot.DriveLeftBack.setPower(0);
     }
-    public void moveRight (double power, int time){
+    public void moveRight (double power, int time){//moveleft??
         robot.DriveRightFront.setPower(power);
         robot.DriveLeftFront.setPower(-power);
         robot.DriveRightBack.setPower(-power );
@@ -70,6 +85,63 @@ public class Team4008AutoBlue2025 extends LinearOpMode {
         robot.DriveRightBack.setPower(0);
         robot.DriveLeftBack.setPower(0);
     }
+
+    public void turnRight(double power, int time){//90 degree?
+        robot.DriveRightFront.setPower(power);
+        robot.DriveLeftFront.setPower(-power);
+        robot.DriveRightBack.setPower(power );
+        robot.DriveLeftBack.setPower(-power);
+        sleep(time);
+        robot.DriveRightFront.setPower(0);
+        robot.DriveLeftFront.setPower(0);
+        robot.DriveRightBack.setPower(0);
+        robot.DriveLeftBack.setPower(0);
+    }
+
+    public void armForward (double armPower, int time){//forward
+
+
+        //*0.75 for arm
+        robot.LeftArm.setPower(armPower * 0.75);
+        robot.RightArm.setPower(armPower * -1 * 0.75);
+        sleep(time);
+        robot.LeftArm.setPower(0);
+        robot.RightArm.setPower(0);
+
+
+    }
+    public void armBackward (double armPower, int time){//backward
+
+
+        //*0.75 for arm
+        robot.LeftArm.setPower(armPower * -1 * 0.75);
+        robot.RightArm.setPower(armPower * 0.75);
+        sleep(time);
+        robot.LeftArm.setPower(0);
+        robot.RightArm.setPower(0);
+
+
+    }
+
+
+    public void slideUp(double slidePower, int time) {//up
+        robot.LeftSlide.setPower(slidePower);
+        robot.RightSlide.setPower(slidePower * -1);
+        sleep(time);
+        robot.LeftSlide.setPower(0);
+        robot.RightSlide.setPower(0);
+
+    }
+
+
+    public void slideDown(double slidePower, int time) {//down
+        robot.LeftSlide.setPower(slidePower* -1);
+        robot.RightSlide.setPower(slidePower);
+        sleep(time);
+        robot.LeftSlide.setPower(0);
+        robot.RightSlide.setPower(0);
+    }
+
 
 
 
