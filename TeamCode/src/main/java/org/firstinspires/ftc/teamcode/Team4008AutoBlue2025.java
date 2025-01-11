@@ -11,12 +11,12 @@ public class Team4008AutoBlue2025 extends LinearOpMode {
     Team4008HM2025 robot = new Team4008HM2025();
     ElapsedTime Time = new ElapsedTime();
 
-
     @Override
     public void runOpMode() {
         robot.Map(hardwareMap);
-        robot.Servo.setPosition(0);
-
+        robot.Servo.setPosition(0);//Giving time for putting the blocks in the claw before auto starts
+        sleep(3000);
+        robot.Servo.setPosition(0.4);
         waitForStart();
 
 
@@ -25,15 +25,16 @@ public class Team4008AutoBlue2025 extends LinearOpMode {
        Reach the ascent zone
 
         */
+        //put the starting block in the high basket
+        moveForward(0.5,1000); //1250?closer
+        slideUp(0.5,1000);
 
-       moveForward(0.4,1800);
+
+        /*moveForward(0.4,1800);
        //slideUp(0.4,2000);
         moveRight(0.4,4000);
         moveBackward(0.4,1250);
-
-       //armForward(0.4,250);
-       robot.Servo.setPosition(0.4);//open
-       //armBackward(0.4,250);
+*/
 
 
 
@@ -41,7 +42,7 @@ public class Team4008AutoBlue2025 extends LinearOpMode {
     }
 
     public void moveForward (double power, int time){
-        robot.DriveRightFront.setPower(-power);//forward is -direction?
+        robot.DriveRightFront.setPower(-power);
         robot.DriveLeftFront.setPower(-power);
         robot.DriveRightBack.setPower(-power);
         robot.DriveLeftBack.setPower(-power);
@@ -62,7 +63,7 @@ public class Team4008AutoBlue2025 extends LinearOpMode {
         robot.DriveRightBack.setPower(0);
         robot.DriveLeftBack.setPower(0);
     }
-    public void moveRight (double power, int time){//moveleft??
+    public void moveRight (double power, int time){
         robot.DriveRightFront.setPower(power);
         robot.DriveLeftFront.setPower(-power);
         robot.DriveRightBack.setPower(-power );
@@ -98,6 +99,8 @@ public class Team4008AutoBlue2025 extends LinearOpMode {
         robot.DriveLeftBack.setPower(0);
     }
 
+
+
     public void armForward (double armPower, int time){//forward
 
 
@@ -125,8 +128,8 @@ public class Team4008AutoBlue2025 extends LinearOpMode {
 
 
     public void slideUp(double slidePower, int time) {//up
-        robot.LeftSlide.setPower(slidePower);
-        robot.RightSlide.setPower(slidePower * -1);
+        robot.LeftSlide.setPower(slidePower * 1);
+        robot.RightSlide.setPower(slidePower );
         sleep(time);
         robot.LeftSlide.setPower(0);
         robot.RightSlide.setPower(0);
