@@ -19,9 +19,12 @@ public class Team4008AutoRed2025 extends LinearOpMode{
 
         /*
         facing the right to start
-        parking
+        parking (parking autos)
          */
         moveForward(0.4,2200);
+        /*
+        Other autos we could do:
+        */
 
 
 
