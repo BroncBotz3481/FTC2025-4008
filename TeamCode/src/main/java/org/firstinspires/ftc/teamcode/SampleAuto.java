@@ -15,15 +15,31 @@ public class SampleAuto extends LinearOpMode{
     @Override
     public void runOpMode() {
         robot.Map(hardwareMap);
+
         robot.Servo.setPosition(0);//have 3 sec to put in the sample
         sleep(3000);
         robot.Servo.setPosition(0.4);
+        sleep(1500);
+
+        robot.LeftArm.setPower(-0.8);
+        robot.RightArm.setPower(0.8);
+        sleep(800);
+        robot.LeftArm.setPower(0);
+        robot.RightArm.setPower(0);
+        sleep(400);
         waitForStart();
+
+        robot.LeftArm.setPower(0.8);
+        robot.RightArm.setPower(-0.8);
+        sleep(800);
+        robot.LeftArm.setPower(0);
+        robot.RightArm.setPower(0);
+
 
 
         robot.LeftSlide.setPower(-0.8);
         robot.RightSlide.setPower(0.8);
-        sleep(2000);//7500-max height
+        sleep(3600);//7500-max height
         //sleep(6500);
         robot.LeftSlide.setPower(0);
         robot.RightSlide.setPower(0);
@@ -33,7 +49,7 @@ public class SampleAuto extends LinearOpMode{
         robot.DriveLeftFront.setPower(-0.6);
         robot.DriveRightBack.setPower(-0.6);
         robot.DriveLeftBack.setPower(-0.6);
-        sleep(1400);
+        sleep(1300);
         robot.DriveRightFront.setPower(0);
         robot.DriveLeftFront.setPower(0);
         robot.DriveRightBack.setPower(0);
@@ -53,12 +69,7 @@ public class SampleAuto extends LinearOpMode{
 
          */
 
-        robot.LeftArm.setPower(-0.7);
-        robot.RightArm.setPower(0.7);
-        sleep(150);
-        robot.LeftArm.setPower(0);
-        robot.RightArm.setPower(0);
-        sleep(1000);
+
 
 
 
@@ -83,100 +94,42 @@ public class SampleAuto extends LinearOpMode{
         //drop the preload sample in the low basket
 
 
-
-        /*robot.DriveRightFront.setPower(0.6);
-        robot.DriveLeftFront.setPower(-0.6);
-        robot.DriveRightBack.setPower(0.6 );
-        robot.DriveLeftBack.setPower(-0.6);
-        sleep(150);
-        robot.DriveRightFront.setPower(0);
-        robot.DriveLeftFront.setPower(0);
-        robot.DriveRightBack.setPower(0);
-        robot.DriveLeftBack.setPower(0);
-        sleep(500);
-
-         */
-        robot.LeftArm.setPower(0.7);
-        robot.RightArm.setPower(-0.7);
-        sleep(300);
-        robot.LeftArm.setPower(0);
-        robot.RightArm.setPower(0);
-        sleep(1000);
-
-        robot.DriveRightFront.setPower(0.6);
-        robot.DriveLeftFront.setPower(-0.6);
-        robot.DriveRightBack.setPower(0.6);
-        robot.DriveLeftBack.setPower(-0.6);
-        sleep(150);
-        robot.DriveRightFront.setPower(0);
-        robot.DriveLeftFront.setPower(0);
-        robot.DriveRightBack.setPower(0);
-        robot.DriveLeftBack.setPower(0);
-
-
-
+        //drive out a little
         robot.DriveRightFront.setPower(0.6);
         robot.DriveLeftFront.setPower(0.6);
         robot.DriveRightBack.setPower(0.6);
         robot.DriveLeftBack.setPower(0.6);
-        sleep(850);
+        sleep(975);
         robot.DriveRightFront.setPower(0);
         robot.DriveLeftFront.setPower(0);
         robot.DriveRightBack.setPower(0);
         robot.DriveLeftBack.setPower(0);
 
-        sleep(1000);
-
-        robot.LeftSlide.setPower(0.8);
-        robot.RightSlide.setPower(-0.8);
-        sleep(2000);//7500-max height
-        //sleep(6500);
-        robot.LeftSlide.setPower(0);
-        robot.RightSlide.setPower(0);
-
-        //move right
-        robot.DriveRightFront.setPower(0.6);
-        robot.DriveLeftFront.setPower(-0.6);
-        robot.DriveRightBack.setPower(-0.6);
-        robot.DriveLeftBack.setPower(0.6);
-        sleep(1300);
-        robot.DriveRightFront.setPower(0);
-        robot.DriveLeftFront.setPower(0);
-        robot.DriveRightBack.setPower(0);
-        robot.DriveLeftBack.setPower(0);
-
-        sleep(500);
-
-
-        //about 45 degrees
+        //turn right 90
         robot.DriveRightFront.setPower(0.6);
         robot.DriveLeftFront.setPower(-0.6);
         robot.DriveRightBack.setPower(0.6);
         robot.DriveLeftBack.setPower(-0.6);
-        sleep(220);
+        sleep(600);
         robot.DriveRightFront.setPower(0);
         robot.DriveLeftFront.setPower(0);
         robot.DriveRightBack.setPower(0);
         robot.DriveLeftBack.setPower(0);
 
-        robot.LeftSlide.setPower(-0.8);
-        robot.RightSlide.setPower(0.8);
-        sleep(470);//7500-max height
-        //sleep(6500);
-        robot.LeftSlide.setPower(0);
-        robot.RightSlide.setPower(0);
 
-        robot.Servo.setPosition(0);
         sleep(1000);
-        //angle the arm
-        robot.LeftArm.setPower(-0.7);
-        robot.RightArm.setPower(0.7);
-        sleep(1500);
-        robot.LeftArm.setPower(0);
-        robot.RightArm.setPower(0);
-        sleep(1000);
+
+
+
+
+
+
+
+        sleep(500);
+
 
         robot.Servo.setPosition(0.4);
+
 
 
 
