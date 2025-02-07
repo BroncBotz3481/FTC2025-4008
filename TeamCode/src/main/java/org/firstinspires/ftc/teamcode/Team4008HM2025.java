@@ -21,6 +21,8 @@ public class Team4008HM2025 {
     public DcMotor LeftArm = null;
 
     public Servo Servo = null;
+
+    public Servo wrist = null;
 //I fixed it
 
 
@@ -88,6 +90,9 @@ public class Team4008HM2025 {
         LeftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         Servo = hwMap.get(Servo.class, "Servo");
+
+        wrist = hwMap.get(Servo.class, "Wrist");
+
 
         //Arm = hwMap.get(DcMotor.class, "Arm");
 

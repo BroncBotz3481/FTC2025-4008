@@ -24,6 +24,7 @@ public class Team4008TeleOp2025 extends LinearOpMode {
         robot.DriveLeftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.DriveLeftFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.Servo.setPosition(0.4);
+        robot.Servo.setPosition(0);
 
         int count = 0;
         //robot.Lights.setPattern(RevBlinkinLedDriver.BlinkinPattern.BEATS_PER_MINUTE_PARTY_PALETTE);
@@ -77,6 +78,14 @@ public class Team4008TeleOp2025 extends LinearOpMode {
 
             if(gamepad2.a) {
                 robot.Servo.setPosition(0);//open
+            }
+
+            if(gamepad2.x) {
+                robot.wrist.setPosition(0.5);//close
+            }
+
+            if(gamepad2.b) {
+                robot.wrist.setPosition(0);//open
             }
 //          just in case situation:
 //          if(gamepad2.b) {
