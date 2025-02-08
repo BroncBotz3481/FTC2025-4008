@@ -28,9 +28,21 @@ public class Team4008AutoBasketsMadeByIsabellaTheGreat extends LinearOpMode {
         */
         //put the starting block in the high basket
         moveForward(0.5,1500); //1250?closer
-        slideUp(0.8,3500);
+        slideUp(0.8,2500);
+        armForward(0.5,500);
+
         robot.Servo.setPosition(0.6);
-        slideUp(-0.8,3500);
+        sleep(1000);
+        armForward(-0.5,500);
+        slideUp(-0.8,2500);
+
+        turnRight(0.5,1000);//turn 90 degrees
+        moveForward(0.5,750);
+        moveRight(0.5,350);
+        armForward(0.8,2100);
+        slideUp(0.8,1000);
+        robot.Servo.setPosition(0);
+
 
 
         /*moveForward(0.4,1800);
@@ -108,8 +120,8 @@ public class Team4008AutoBasketsMadeByIsabellaTheGreat extends LinearOpMode {
 
 
         //*0.75 for arm
-        robot.LeftArm.setPower(armPower * 0.75);
-        robot.RightArm.setPower(armPower * -1 * 0.75);
+        robot.LeftArm.setPower(armPower * -1* 0.75);
+        robot.RightArm.setPower(armPower * 0.75);
         sleep(time);
         robot.LeftArm.setPower(0);
         robot.RightArm.setPower(0);
@@ -120,8 +132,8 @@ public class Team4008AutoBasketsMadeByIsabellaTheGreat extends LinearOpMode {
 
 
         //*0.75 for arm
-        robot.LeftArm.setPower(armPower * -1 * 0.75);
-        robot.RightArm.setPower(armPower * 0.75);
+        robot.LeftArm.setPower(armPower  * 0.75);
+        robot.RightArm.setPower(armPower * -1* 0.75);
         sleep(time);
         robot.LeftArm.setPower(0);
         robot.RightArm.setPower(0);
