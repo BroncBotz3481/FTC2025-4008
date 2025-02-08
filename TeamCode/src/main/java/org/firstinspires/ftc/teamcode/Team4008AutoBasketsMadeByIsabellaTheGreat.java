@@ -40,7 +40,7 @@ public class Team4008AutoBasketsMadeByIsabellaTheGreat extends LinearOpMode {
         moveForward(0.5,750);
         moveRight(0.5,350);
         armForward(0.8,2100);
-        slideUp(0.8,1000);
+        slideUp(0.8,1000);//get to the second sample
         robot.Servo.setPosition(0);
 
 
