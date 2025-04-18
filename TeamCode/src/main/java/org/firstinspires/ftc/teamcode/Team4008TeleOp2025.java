@@ -94,9 +94,19 @@ public class Team4008TeleOp2025 extends LinearOpMode {
             telemetry.addData("LeftFront", robot.DriveLeftFront.getCurrentPosition());
             telemetry.addData("LeftBack", robot.DriveLeftBack.getCurrentPosition());
             telemetry.addData("Servo Position", robot.Servo.getPosition());//getCurrentPosition?
+            telemetry.addData("LeftSide", robot.DriveLeftBack.getCurrentPosition());
+            telemetry.addData("LeftArm", robot.DriveLeftBack.getCurrentPosition());
             telemetry.update();
 
-
+            if (gamepad1.dpad_up){
+                moveForward(mag);
+            } else if (gamepad1.dpad_down){
+                moveBackward(mag);
+            } else if (gamepad1.dpad_left){
+                moveLeft(mag);
+            } else if (gamepad1.dpad_right){
+                moveRight(mag);
+            }
 
 
 //            double Arm1 = gamepad2.right_stick_y;
@@ -119,7 +129,35 @@ public class Team4008TeleOp2025 extends LinearOpMode {
 //            }
 //            else {
 //                robot.Arm1.setPower(0);
-//            }
+
+
         }
+
+    }
+    public void moveLeft (double power){
+
+        robot.DriveLeftFront.setPower(-power); robot.DriveRightFront.setPower(power);
+        robot.DriveLeftBack.setPower(power);   robot.DriveRightBack.setPower(-power);
+    }
+    public void moveRight (double power){
+        // Left Wheels                         //Right Wheels
+        robot.DriveLeftFront.setPower(power); robot.DriveRightFront.setPower(-power);
+        robot.DriveLeftBack.setPower(-power); robot.DriveRightBack.setPower(power);
+    }
+    public void moveForward (double power){
+        // Left Wheels                         //Right Wheels
+        robot.DriveLeftFront.setPower(-power); robot.DriveRightFront.setPower(-power);
+        robot.DriveLeftBack.setPower(-power);  robot.DriveRightBack.setPower(-power);
+    }
+    public void moveBackward (double power){
+        // Left Wheels                         //Right Wheels
+        robot.DriveLeftFront.setPower(power); robot.DriveRightFront.setPower(power);
+        robot.DriveLeftBack.setPower(power);  robot.DriveRightBack.setPower(power);
+    }
+    public void stopDriveTrainMotors (){
+        // Left Wheels                         //Right Wheels
+        robot.DriveLeftFront.setPower(0);      robot.DriveRightFront.setPower(0);
+        robot.DriveRightBack.setPower(0);      robot.DriveLeftBack.setPower(0);
+
     }
 }
