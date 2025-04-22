@@ -23,6 +23,14 @@ public class Team4008TeleOp2025 extends LinearOpMode {
         robot.DriveRightBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.DriveLeftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.DriveLeftFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+        robot.RightSlide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.RightSlide.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        robot.LeftArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.LeftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+        double  startArmPosition = robot.LeftArm.getCurrentPosition();
+        double  startSlidePosition = robot.RightSlide.getCurrentPosition() ;
         robot.Servo.setPosition(0.4);
         robot.Servo.setPosition(0);
 
@@ -69,6 +77,21 @@ public class Team4008TeleOp2025 extends LinearOpMode {
             robot.LeftArm.setPower(armPower);
             robot.RightArm.setPower(armPower * -1);
 
+            boolean ArmHorozontal = true;
+
+            while(gamepad2.left_trigger > 0.3) {
+                if (robot.LeftArm.getCurrentPosition() > startSlidePosition + 2000) {
+                    ArmHorozontal = false;
+                    //    telemetry.addData("arm is horozontal",armHorazontal );
+                    telemetry.addData("slide Is In Range ", ArmHorozontal);
+                    if (robot.RightSlide.getCurrentPosition() > startSlidePosition + 2000) {
+                        robot.RightSlide.setPower(-0.75);
+                    }
+                } else {
+                    ArmHorozontal = true;
+                }
+            }
+
             //robot.Servo.setPosition(0.25);
 
 
@@ -94,9 +117,22 @@ public class Team4008TeleOp2025 extends LinearOpMode {
             telemetry.addData("LeftFront", robot.DriveLeftFront.getCurrentPosition());
             telemetry.addData("LeftBack", robot.DriveLeftBack.getCurrentPosition());
             telemetry.addData("Servo Position", robot.Servo.getPosition());//getCurrentPosition?
-            telemetry.addData("LeftSide", robot.DriveLeftBack.getCurrentPosition());
-            telemetry.addData("LeftArm", robot.DriveLeftBack.getCurrentPosition());
+            telemetry.addData("RightSlide", robot.RightSlide.getCurrentPosition());
+            telemetry.addData("LeftArm", robot.LeftArm.getCurrentPosition());
             telemetry.update();
+
+           // boolean armHorazontal = false;
+
+
+//            boolean slideIsInRange = true;
+//
+//            while (robot.LeftSlide.getCurrentPosition() > startSlidePosition + 2000){
+//                slideIsInRange =  false;
+//                //    telemetry.addData("arm is horozontal",armHorazontal );
+//                telemetry.addData("slide Is In Range ",slideIsInRange );
+//            }
+//            slideIsInRange =  true;
+       //     armHorazontal = true;
 
             if (gamepad1.dpad_up){
                 moveForward(mag);
