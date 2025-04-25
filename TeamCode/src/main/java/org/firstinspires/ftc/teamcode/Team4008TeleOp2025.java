@@ -77,22 +77,22 @@ public class Team4008TeleOp2025 extends LinearOpMode {
             robot.LeftArm.setPower(armPower);
             robot.RightArm.setPower(armPower * -1);
 
+
             boolean ArmHorozontal = true;
 
-            while(gamepad2.left_trigger > 0.3) {
+            if(gamepad2.left_trigger > 0.3) {
                 if (robot.LeftArm.getCurrentPosition() > startSlidePosition + 2000) {
                     ArmHorozontal = false;
-                    //    telemetry.addData("arm is horozontal",armHorazontal );
-                    telemetry.addData("slide Is In Range ", ArmHorozontal);
                     if (robot.RightSlide.getCurrentPosition() > startSlidePosition + 2000) {
                         robot.RightSlide.setPower(-0.75);
+                        robot.LeftSlide.setPower(0.75);
                     }
                 } else {
                     ArmHorozontal = true;
                 }
             }
-
             //robot.Servo.setPosition(0.25);
+            telemetry.addData("arm is horozontal",ArmHorozontal );
 
 
             if(gamepad2.y) {
