@@ -11,49 +11,30 @@ public class SampleAuto extends LinearOpMode {
     Team4008HM2025 robot = new Team4008HM2025();
     ElapsedTime Time = new ElapsedTime();
 
-    double armStart = robot.LeftArm.getCurrentPosition();
-    double slideStart = robot.RightSlide.getCurrentPosition();
-
 
     @Override
     public void runOpMode() {
         robot.Map(hardwareMap);
 
         telemetry.update();
-
-        robot.DriveRightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.DriveRightFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        robot.DriveLeftBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.DriveLeftBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        robot.DriveRightBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.DriveRightBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        robot.DriveLeftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.DriveLeftFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-
-        robot.RightSlide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.RightSlide.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        robot.LeftArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.LeftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-
-
         waitForStart();
 
         Time.reset();
-        driveForward(12, 0.5, 1500);
-        turn(-500, 0.5, 1500);
-        strafeRight(12, 0.5, 1500);
+        driveForward(6, 0.5, 2500);
+        armAngleChange(1300, 0.5, 2500);
+
+//        turn(-500, 0.5, 1500);
+//        strafeRight(12, 0.5, 1500);
 
 
     }
 
 
-    public double ticksToDistance (double inches){
-        return (inches * 537.7)/(4 * Math.PI);
+    public double inchesToTicks (double inches){
+        return (inches * 537.7)/(2 * Math.PI * 1.9);
     }
 
     public void driveForward(double inches, double power, int time) {
-
-
 
         robot.DriveRightFront.setPower(power);
         robot.DriveLeftFront.setPower(power);
@@ -61,8 +42,8 @@ public class SampleAuto extends LinearOpMode {
         robot.DriveLeftBack.setPower(power);
 
         while (opModeIsActive() && Time.milliseconds() < time
-                && robot.DriveLeftFront.getCurrentPosition() < ticksToDistance(inches)
-                && robot.DriveRightBack.getCurrentPosition() < ticksToDistance(inches))
+                && robot.DriveLeftFront.getCurrentPosition() < inchesToTicks(inches)
+                && robot.DriveRightBack.getCurrentPosition() < inchesToTicks(inches))
         {
             telemetry.addData("Encoder Val", robot.DriveLeftFront.getCurrentPosition());
         }
@@ -70,8 +51,6 @@ public class SampleAuto extends LinearOpMode {
         robot.DriveLeftFront.setPower(0);
         robot.DriveRightBack.setPower(0);
         robot.DriveLeftBack.setPower(0);
-        robot.DriveLeftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.DriveLeftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         Time.reset();
 
@@ -104,8 +83,8 @@ public class SampleAuto extends LinearOpMode {
         robot.DriveLeftBack.setPower(-power);
 
         while (opModeIsActive() && Time.milliseconds() < time
-                && robot.DriveLeftFront.getCurrentPosition() < ticksToDistance(inches)
-                && robot.DriveRightBack.getCurrentPosition() < ticksToDistance(inches))
+                && robot.DriveLeftFront.getCurrentPosition() < inchesToTicks(inches)
+                && robot.DriveRightBack.getCurrentPosition() < inchesToTicks(inches))
         {
             telemetry.addData("Encoder Val", robot.DriveLeftFront.getCurrentPosition());
         }
@@ -113,11 +92,43 @@ public class SampleAuto extends LinearOpMode {
         robot.DriveLeftFront.setPower(0);
         robot.DriveRightBack.setPower(0);
         robot.DriveLeftBack.setPower(0);
-        robot.DriveLeftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.DriveLeftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         Time.reset();
 
+    }
+
+    public void armAngleChange(double ticks, double power, int time){ //guess ur ticks : )
+        robot.LeftArm.setPower(power);
+        robot.RightArm.setPower(power * -1);
+
+        while (opModeIsActive() && Time.milliseconds() < time
+                && robot.LeftArm.getCurrentPosition() < ticks
+                && robot.RightArm.getCurrentPosition() < ticks)
+        {
+            telemetry.addData("Arm Encoder Vals", robot.LeftArm.getCurrentPosition());
+        }
+
+        robot.LeftArm.setPower(0);
+        robot.RightArm.setPower(0);
+
+        Time.reset();
+    }
+
+    public void slideChange(double inches, double power, int time){
+        robot.LeftSlide.setPower(power);
+        robot.RightSlide.setPower(power * -1);
+
+        while (opModeIsActive() && Time.milliseconds() < time
+                && robot.LeftSlide.getCurrentPosition() < inchesToTicks(inches)
+                && robot.RightSlide.getCurrentPosition() < inchesToTicks(inches))
+        {
+            telemetry.addData("Slide Encoder Vals", robot.LeftSlide.getCurrentPosition());
+        }
+
+        robot.LeftSlide.setPower(0);
+        robot.RightSlide.setPower(0);
+
+        Time.reset();
     }
 
     public double isNegitive(double encoder){
