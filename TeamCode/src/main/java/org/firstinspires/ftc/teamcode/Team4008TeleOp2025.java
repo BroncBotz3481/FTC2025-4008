@@ -30,7 +30,7 @@ public class Team4008TeleOp2025 extends LinearOpMode {
         robot.LeftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         double  startArmPosition = robot.LeftArm.getCurrentPosition();
-        double  startSlidePosition = robot.RightSlide.getCurrentPosition() ;
+        double  startSlidePosition = robot.RightSlide.getCurrentPosition();
         robot.Servo.setPosition(0.4);
         robot.Servo.setPosition(0);
 
@@ -81,7 +81,7 @@ public class Team4008TeleOp2025 extends LinearOpMode {
             boolean ArmHorozontal = true;
 
             if(gamepad2.left_trigger > 0.3) {
-                if (robot.LeftArm.getCurrentPosition() > startSlidePosition + 2000) {
+                if (robot.LeftArm.getCurrentPosition() > startArmPosition + 2000) {
                     ArmHorozontal = false;
                     if (robot.RightSlide.getCurrentPosition() > startSlidePosition + 2000) {
                         robot.RightSlide.setPower(-0.75);
