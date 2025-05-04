@@ -42,8 +42,13 @@ public class Team4008TeleOp2025 extends LinearOpMode {
             boolean speedslow = gamepad1.right_bumper;
             double mag = speedslow ? 0.5 : 1.0;
 
-            double y = gamepad1.left_stick_y; // Remember, this is reversed!
-            double x = -gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
+//            double y = gamepad1.left_stick_y; // Remember, this is reversed!
+//            double x = -gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
+//            double rx = -gamepad1.right_stick_x;
+
+            //Deadzones
+            double y = (Math.abs(gamepad1.left_stick_y) > 0.1 ? gamepad1.left_stick_y : 0); // Remember, this is reversed!
+            double x = -(Math.abs(gamepad1.left_stick_x) > 0.1 ? gamepad1.left_stick_x : 0) * 1.1; // Counteract imperfect strafing
             double rx = -gamepad1.right_stick_x;
 
 
@@ -69,11 +74,11 @@ public class Team4008TeleOp2025 extends LinearOpMode {
             robot.DriveRightFront.setPower(frontRightPower * mag);
             robot.DriveRightBack.setPower(backRightPower * mag);
 
-            double slidePower = gamepad2.left_stick_y;//up and down
+            double slidePower = (Math.abs(gamepad2.left_stick_y) > 0.1 ? gamepad2.left_stick_y : 0 );//up and down
             robot.LeftSlide.setPower(slidePower);
             robot.RightSlide.setPower(slidePower * -1);
 
-            double armPower = gamepad2.right_stick_y * 0.75;//forward and backward
+            double armPower = (Math.abs(gamepad2.right_stick_y) > 0.1 ? gamepad2.right_stick_y : 0 );//forward and backward
             robot.LeftArm.setPower(armPower);
             robot.RightArm.setPower(armPower * -1);
 
@@ -84,15 +89,15 @@ public class Team4008TeleOp2025 extends LinearOpMode {
                 if (robot.LeftArm.getCurrentPosition() > startArmPosition + 2000) {
                     ArmHorozontal = false;
                     if (robot.RightSlide.getCurrentPosition() > startSlidePosition + 2000) {
-                        robot.RightSlide.setPower(-0.75);
-                        robot.LeftSlide.setPower(0.75);
+                        robot.RightSlide.setPower(-0.85);
+                        robot.LeftSlide.setPower(0.85);
                     }
                 } else {
                     ArmHorozontal = true;
                 }
             }
             //robot.Servo.setPosition(0.25);
-            telemetry.addData("arm is horozontal",ArmHorozontal );
+            telemetry.addData("arm is horozontal", ArmHorozontal );
 
 
             if(gamepad2.y) {
@@ -121,18 +126,7 @@ public class Team4008TeleOp2025 extends LinearOpMode {
             telemetry.addData("LeftArm", robot.LeftArm.getCurrentPosition());
             telemetry.update();
 
-           // boolean armHorazontal = false;
 
-
-//            boolean slideIsInRange = true;
-//
-//            while (robot.LeftSlide.getCurrentPosition() > startSlidePosition + 2000){
-//                slideIsInRange =  false;
-//                //    telemetry.addData("arm is horozontal",armHorazontal );
-//                telemetry.addData("slide Is In Range ",slideIsInRange );
-//            }
-//            slideIsInRange =  true;
-       //     armHorazontal = true;
 
             if (gamepad1.dpad_up){
                 moveForward(mag);
@@ -143,28 +137,6 @@ public class Team4008TeleOp2025 extends LinearOpMode {
             } else if (gamepad1.dpad_right){
                 moveRight(mag);
             }
-
-
-//            double Arm1 = gamepad2.right_stick_y;
-//            double Arm2 = gamepad2.left_stick_y;
-//            robot.Arm1.setPower(Arm1);
-//            robot.Arm2.setPower(Arm2);
-            // left bumper is open, right bumper is close
-//            if (gamepad2.right_bumper) {
-//                robot.Intake.setPosition(1.0);
-//            }
-//            if (gamepad2.left_bumper){
-//                robot.Intake.setPosition(0.3);
-//            }
-
-//            if(gamepad2.y){
-//                robot.Arm1.setPower(.9);
-//            }
-//            else if (gamepad2.x){
-//                robot.Arm1.setPower(-1);
-//            }
-//            else {
-//                robot.Arm1.setPower(0);
 
 
         }

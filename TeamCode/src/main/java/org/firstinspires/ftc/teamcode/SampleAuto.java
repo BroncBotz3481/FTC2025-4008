@@ -53,6 +53,9 @@ public class SampleAuto extends LinearOpMode {
         robot.DriveRightBack.setPower(0);
         robot.DriveLeftBack.setPower(0);
 
+        robot.DriveLeftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER); //Stops and resets the encoder to the 0 value for next use
+        robot.DriveLeftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
         Time.reset();
 
     }
@@ -94,6 +97,9 @@ public class SampleAuto extends LinearOpMode {
         robot.DriveRightBack.setPower(0);
         robot.DriveLeftBack.setPower(0);
 
+        robot.DriveLeftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER); //Stops and resets the encoder to the 0 value for next use
+        robot.DriveLeftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
         Time.reset();
 
     }
@@ -112,6 +118,9 @@ public class SampleAuto extends LinearOpMode {
         robot.LeftArm.setPower(0);
         robot.RightArm.setPower(0);
 
+        robot.DriveLeftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER); //Stops and resets the encoder to the 0 value for next use
+        robot.DriveLeftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
         Time.reset();
     }
 
@@ -128,6 +137,9 @@ public class SampleAuto extends LinearOpMode {
 
         robot.LeftSlide.setPower(0);
         robot.RightSlide.setPower(0);
+
+        robot.DriveLeftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER); //Stops and resets the encoder to the 0 value for next use
+        robot.DriveLeftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         Time.reset();
     }
