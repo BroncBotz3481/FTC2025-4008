@@ -22,6 +22,7 @@ public class SampleAuto extends LinearOpMode {
         Time.reset();
         driveForward(6, 0.5, 2500);
         armAngleChange(1300, 0.5, 2500);
+        slideChange(16, 0.5, 1500);
 
 //        turn(-500, 0.5, 1500);
 //        strafeRight(12, 0.5, 1500);
@@ -120,7 +121,7 @@ public class SampleAuto extends LinearOpMode {
 
         while (opModeIsActive() && Time.milliseconds() < time
                 && robot.LeftSlide.getCurrentPosition() < inchesToTicks(inches)
-                && robot.RightSlide.getCurrentPosition() < inchesToTicks(inches))
+               )
         {
             telemetry.addData("Slide Encoder Vals", robot.LeftSlide.getCurrentPosition());
         }
